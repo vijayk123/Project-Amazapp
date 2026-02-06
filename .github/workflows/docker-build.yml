@@ -26,5 +26,5 @@ jobs:
       - name: Build, tag, and push Docker image
         run: |
           docker build -t amazapp .
-          docker tag 694322569254.dkr.ecr.ap-south-1.amazonaws.com/amazapp:latest
+          docker tag amazapp:latest 694322569254.dkr.ecr.ap-south-1.amazonaws.com/amazapp:latest
           docker push 694322569254.dkr.ecr.ap-south-1.amazonaws.com/amazapp:latest
