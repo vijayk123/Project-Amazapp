@@ -1,6 +1,0 @@
-name: Build Docker Image
-
-on:
- push:
-   branches:
-     - main
