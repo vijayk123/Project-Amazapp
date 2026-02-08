@@ -2,7 +2,7 @@ name: Deploy to EC2
 
 on:
   workflow_run:
-    workflows: ["Build and Push Docker Image to ECR"]
+    workflows: ["Build and Pushing Docker Image to ECR"]
     types:
       - completed
 
