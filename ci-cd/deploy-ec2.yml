@@ -1,0 +1,32 @@
+name: Deploy to EC2
+
+on:
+  workflow_run:
+    workflows: ["Build and Pushing Docker Image to ECR"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo docker rm -f amazapp || true
+
+            aws ecr get-login-password --region ap-south-1 | sudo docker login --username AWS --password-stdin 694322569254.dkr.ecr.ap-south-1.amazonaws.com
+
+            sudo docker pull 694322569254.dkr.ecr.ap-south-1.amazonaws.com/amazapp:latest
+
+            sudo docker run -d \
+              --restart unless-stopped \
+              -p 5000:5000 \
+              --name amazapp \
+              694322569254.dkr.ecr.ap-south-1.amazonaws.com/amazapp:latest

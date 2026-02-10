@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amazapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: amazapp
+  template:
+    metadata:
+      labels:
+        app: amazapp
+    spec:
+      containers:
+      - name: amazapp
+        image: 694322569254.dkr.ecr.ap-south-1.amazonaws.com/amazapp:latest
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
