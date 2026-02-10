@@ -72,14 +72,14 @@ Prometheus(Metrics) --> Grafana(Dashboards)
 ## Repository Structure
 
 amazapp-devops-project/
-│
-├── app/                  # Application code and Dockerfile
-├── ci-cd/                # GitHub Actions pipeline
-├── kubernetes/           # Deployment, Service, Ingress, HPA
-├── monitoring/           # Prometheus & Grafana notes
-├── troubleshooting/      # Issues I faced and how I fixed them
-├── aws/                  # IAM, ECR, EKS notes
-└── cleanup/              # Resource deletion steps
+
+ app/                  # Application code and Dockerfile,
+ ci-cd/                # GitHub Actions pipeline,
+ kubernetes/           # Deployment, Service, Ingress, HPA,
+ monitoring/           # Prometheus & Grafana notes,
+ troubleshooting/      # Issues I faced and how I fixed them,
+ aws/                  # IAM, ECR, EKS notes,
+ cleanup/              # Resource deletion steps,
 
 
 
